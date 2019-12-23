@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  MandelbrotView.swift
 //  macmandel
 //
 //  Copyright © 2019 iAchieved.it LLC
@@ -25,19 +25,41 @@
 
 import Cocoa
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+@IBDesignable
+class MandelbrotView: NSView {
+  
+  var m:Mandelbrot?
+    
+  func draw() {
 
-
-
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
-    // Insert code here to initialize your application
+    self.m = Mandelbrot(r:self.visibleRect)
+    self.needsDisplay = true
   }
 
-  func applicationWillTerminate(_ aNotification: Notification) {
-    // Insert code here to tear down your application
-  }
+    override func draw(_ dirtyRect: NSRect) {
+      super.draw(dirtyRect)
 
+      
+      self.m?.iterate {
+        (x, y, i) in
+        
+        let p = NSBezierPath(rect: dirtyRect)
 
+        let color = NSColor.init(calibratedRed: CGFloat(Float(i)/32.0),
+                                 green: CGFloat(Float(i)/64.0),
+                                 blue: CGFloat(Float(i)/128.0), alpha: 1.0)
+        
+        color.setStroke()
+        
+        p.move(to: NSPoint(x:x, y:y))
+        p.line(to: NSPoint(x:x+1, y:y+1))
+        p.lineWidth = 1.0
+        p.stroke()
+        
+        self.display()
+      }
+
+ 
+    }
+    
 }
-

@@ -11,6 +11,8 @@
 		0C888EAA23B01C20003C9C29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C888EA923B01C20003C9C29 /* ViewController.swift */; };
 		0C888EAC23B01C20003C9C29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C888EAB23B01C20003C9C29 /* Assets.xcassets */; };
 		0C888EAF23B01C20003C9C29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C888EAD23B01C20003C9C29 /* Main.storyboard */; };
+		0C888EB823B01C3D003C9C29 /* MandelbrotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C888EB723B01C3D003C9C29 /* MandelbrotView.swift */; };
+		0C888EBA23B01E6B003C9C29 /* Mandelbrot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C888EB923B01E6B003C9C29 /* Mandelbrot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		0C888EAE23B01C20003C9C29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C888EB023B01C20003C9C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C888EB123B01C20003C9C29 /* macmandel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macmandel.entitlements; sourceTree = "<group>"; };
+		0C888EB723B01C3D003C9C29 /* MandelbrotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandelbrotView.swift; sourceTree = "<group>"; };
+		0C888EB923B01E6B003C9C29 /* Mandelbrot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandelbrot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				0C888EAD23B01C20003C9C29 /* Main.storyboard */,
 				0C888EB023B01C20003C9C29 /* Info.plist */,
 				0C888EB123B01C20003C9C29 /* macmandel.entitlements */,
+				0C888EB723B01C3D003C9C29 /* MandelbrotView.swift */,
+				0C888EB923B01E6B003C9C29 /* Mandelbrot.swift */,
 			);
 			path = macmandel;
 			sourceTree = "<group>";
@@ -133,8 +139,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C888EB823B01C3D003C9C29 /* MandelbrotView.swift in Sources */,
 				0C888EAA23B01C20003C9C29 /* ViewController.swift in Sources */,
 				0C888EA823B01C20003C9C29 /* AppDelegate.swift in Sources */,
+				0C888EBA23B01E6B003C9C29 /* Mandelbrot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
