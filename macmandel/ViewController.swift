@@ -28,6 +28,10 @@ import Cocoa
 class ViewController: NSViewController {
 
   @IBOutlet weak var mandelbrotView: MandelbrotView!
+  @IBOutlet weak var xMinTextField: NSTextField!
+  @IBOutlet weak var xMaxTextField: NSTextField!
+  @IBOutlet weak var yMinTextField: NSTextField!
+  @IBOutlet weak var yMaxTextField: NSTextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,7 +46,13 @@ class ViewController: NSViewController {
   }
 
   @IBAction func goButtonClicked(_ sender: Any) {
-    self.mandelbrotView.draw()
+    log.debug("Go")
+    let x0Min = CGFloat(self.xMinTextField.floatValue)
+    let x0Max = CGFloat(self.xMaxTextField.floatValue)
+    let y0Min = CGFloat(self.yMinTextField.floatValue)
+    let y0Max = CGFloat(self.yMaxTextField.floatValue)
+
+    self.mandelbrotView.draw(x0Min:x0Min, x0Max:x0Max, y0Min:y0Min, y0Max:y0Max)
   }
   
 }

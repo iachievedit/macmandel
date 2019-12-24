@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C67BEDE23B1179700F7A6C7 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 0C67BEDD23B1179700F7A6C7 /* SwiftyBeaver */; };
+		0C7F110823B16D750028A957 /* MandelbrotColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F110723B16D750028A957 /* MandelbrotColors.swift */; };
+		0C7F110D23B1797E0028A957 /* SwiftHEXColors in Frameworks */ = {isa = PBXBuildFile; productRef = 0C7F110C23B1797E0028A957 /* SwiftHEXColors */; };
 		0C888EA823B01C20003C9C29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C888EA723B01C20003C9C29 /* AppDelegate.swift */; };
 		0C888EAA23B01C20003C9C29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C888EA923B01C20003C9C29 /* ViewController.swift */; };
 		0C888EAC23B01C20003C9C29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C888EAB23B01C20003C9C29 /* Assets.xcassets */; };
@@ -16,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C7F110723B16D750028A957 /* MandelbrotColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandelbrotColors.swift; sourceTree = "<group>"; };
 		0C888EA423B01C20003C9C29 /* macmandel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macmandel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C888EA723B01C20003C9C29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C888EA923B01C20003C9C29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7F110D23B1797E0028A957 /* SwiftHEXColors in Frameworks */,
+				0C67BEDE23B1179700F7A6C7 /* SwiftyBeaver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +71,7 @@
 				0C888EB123B01C20003C9C29 /* macmandel.entitlements */,
 				0C888EB723B01C3D003C9C29 /* MandelbrotView.swift */,
 				0C888EB923B01E6B003C9C29 /* Mandelbrot.swift */,
+				0C7F110723B16D750028A957 /* MandelbrotColors.swift */,
 			);
 			path = macmandel;
 			sourceTree = "<group>";
@@ -85,6 +92,10 @@
 			dependencies = (
 			);
 			name = macmandel;
+			packageProductDependencies = (
+				0C67BEDD23B1179700F7A6C7 /* SwiftyBeaver */,
+				0C7F110C23B1797E0028A957 /* SwiftHEXColors */,
+			);
 			productName = macmandel;
 			productReference = 0C888EA423B01C20003C9C29 /* macmandel.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +124,10 @@
 				Base,
 			);
 			mainGroup = 0C888E9B23B01C20003C9C29;
+			packageReferences = (
+				0C67BEDC23B1179700F7A6C7 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+				0C7F110B23B1797E0028A957 /* XCRemoteSwiftPackageReference "SwiftHEXColors" */,
+			);
 			productRefGroup = 0C888EA523B01C20003C9C29 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7F110823B16D750028A957 /* MandelbrotColors.swift in Sources */,
 				0C888EB823B01C3D003C9C29 /* MandelbrotView.swift in Sources */,
 				0C888EAA23B01C20003C9C29 /* ViewController.swift in Sources */,
 				0C888EA823B01C20003C9C29 /* AppDelegate.swift in Sources */,
@@ -335,6 +351,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C67BEDC23B1179700F7A6C7 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.4;
+			};
+		};
+		0C7F110B23B1797E0028A957 /* XCRemoteSwiftPackageReference "SwiftHEXColors" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thii/SwiftHEXColors.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C67BEDD23B1179700F7A6C7 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C67BEDC23B1179700F7A6C7 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+		0C7F110C23B1797E0028A957 /* SwiftHEXColors */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C7F110B23B1797E0028A957 /* XCRemoteSwiftPackageReference "SwiftHEXColors" */;
+			productName = SwiftHEXColors;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C888E9C23B01C20003C9C29 /* Project object */;
 }

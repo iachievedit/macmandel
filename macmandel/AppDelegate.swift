@@ -24,14 +24,15 @@
 //
 
 import Cocoa
+import SwiftyBeaver
+let log = SwiftyBeaver.self
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    // Insert code here to initialize your application
+    let console = ConsoleDestination()
+    log.addDestination(console)
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {

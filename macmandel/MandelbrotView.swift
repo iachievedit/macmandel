@@ -29,37 +29,42 @@ import Cocoa
 class MandelbrotView: NSView {
   
   var m:Mandelbrot?
+  var c:MandelbrotColors = MandelbrotColors()
     
   func draw() {
-
     self.m = Mandelbrot(r:self.visibleRect)
     self.needsDisplay = true
   }
+  
+  func draw(x0Min:CGFloat,x0Max:CGFloat,y0Min:CGFloat,y0Max:CGFloat) {
+    self.m = Mandelbrot(r:self.visibleRect, x0Min: x0Min, x0Max:x0Max, y0Min:y0Min, y0Max:y0Max)
+    self.needsDisplay = true
+  }
+  
+  override func draw(_ dirtyRect: NSRect) {
+    super.draw(dirtyRect)
 
-    override func draw(_ dirtyRect: NSRect) {
-      super.draw(dirtyRect)
+    log.debug("draw Mandelbrot")
+          
+    let context = NSGraphicsContext.current?.cgContext
+    
+    self.m?.iterate {
+      (x, y, i) in
+        let p = CGMutablePath()
+        p.move(to: CGPoint(x:x,y:y))
+        p.addLine(to: CGPoint(x:x+1,y:y+1))
 
-      
-      self.m?.iterate {
-        (x, y, i) in
-        
-        let p = NSBezierPath(rect: dirtyRect)
-
-        let color = NSColor.init(calibratedRed: CGFloat(Float(i)/32.0),
-                                 green: CGFloat(Float(i)/64.0),
-                                 blue: CGFloat(Float(i)/128.0), alpha: 1.0)
+        let color = c.colorForIteration(i: i)
         
         color.setStroke()
-        
-        p.move(to: NSPoint(x:x, y:y))
-        p.line(to: NSPoint(x:x+1, y:y+1))
-        p.lineWidth = 1.0
-        p.stroke()
-        
-        self.display()
-      }
-
- 
+        context?.addPath(p)
+        context?.drawPath(using: .fillStroke)
     }
     
+    self.m = nil
+    
+  }
 }
+    
+    
+

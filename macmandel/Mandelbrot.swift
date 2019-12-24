@@ -29,10 +29,10 @@ class Mandelbrot {
   
   var rect:NSRect
   
-  let x0Min:CGFloat = -2.5
-  let x0Max:CGFloat = 1.0
-  let y0Min:CGFloat = -1
-  let y0Max:CGFloat = 1
+  var x0Min:CGFloat = -2.5
+  var x0Max:CGFloat = 1.0
+  var y0Min:CGFloat = -1
+  var y0Max:CGFloat = 1
   
   var xScale:CGFloat
   var yScale:CGFloat
@@ -43,13 +43,25 @@ class Mandelbrot {
     self.yScale = y0Max - (y0Min)
   }
   
+  init(r:NSRect, x0Min:CGFloat, x0Max:CGFloat, y0Min:CGFloat, y0Max:CGFloat) {
+    rect = r
+    self.x0Min = x0Min
+    self.x0Max = x0Max
+    self.y0Min = y0Min
+    self.y0Max = y0Max
+    self.xScale = self.x0Max - (self.x0Min)
+    self.yScale = self.y0Max - (self.y0Min)
+  }
+  
   func iterate(c:(_ x:CGFloat, _ y:CGFloat, _ i:Int) -> Void) {
+    log.debug("Calculate start")
     for x in 0...Int(self.rect.width) {
       for y in 0...Int(self.rect.height) {
         let i = self.m(x:CGFloat(x),y:CGFloat(y))
         c(CGFloat(x),CGFloat(y),i)
       }
     }
+    log.debug("Calculate end")
   }
   
   func m(x:CGFloat, y:CGFloat) -> Int {
@@ -60,8 +72,8 @@ class Mandelbrot {
     var _x:CGFloat = 0.0
     var _y:CGFloat = 0.0
      
-    let x0 = (x/self.rect.width)*self.xScale + x0Min
-    let y0 = (y/self.rect.height)*self.yScale + y0Min
+    let x0 = (x/self.rect.width)*self.xScale + self.x0Min
+    let y0 = (y/self.rect.height)*self.yScale + self.y0Min
 
     var _xSquared = _x*_x
     var _ySquared = _y*_y
