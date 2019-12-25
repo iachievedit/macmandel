@@ -83,18 +83,22 @@ class Mandelbrot {
   
   func zoom(upperLeft:NSPoint, lowerRight:NSPoint) {
     
-    log.debug(upperLeft)
-    log.debug(lowerRight)
+    log.debug("\(upperLeft) \(lowerRight)")
+
     
     let x0MinOrig = self.x0Min
-    let x0MaxOrig = self.x0Max
     let y0MinOrig = self.y0Min
-    let y0MaxOrig = self.y0Max
+    
+    log.debug("Original x0Min = \(x0MinOrig), y0Min = \(y0MinOrig)")
+    log.debug("Original x0Max = \(x0Max),     y0Max = \(y0Max)")
         
     self.x0Min = self.xScale*(upperLeft.x  / self.rect.width) + x0MinOrig
     self.x0Max = self.xScale*(lowerRight.x / self.rect.width) + x0MinOrig
-    self.y0Min = self.yScale*(upperLeft.y  / self.rect.height) + y0MinOrig
-    self.y0Max = self.yScale*(lowerRight.y / self.rect.height) + y0MinOrig
+    self.y0Min = self.yScale*(lowerRight.y  / self.rect.height) + y0MinOrig
+    self.y0Max = self.yScale*(upperLeft.y / self.rect.height) + y0MinOrig
+    
+    log.debug("New X = \(self.x0Min) - \(self.x0Max)")
+    log.debug("New Y = \(self.y0Min) - \(self.y0Max)")
     
     // Recalculate scale
     self.xScale = self.x0Max - (self.x0Min)

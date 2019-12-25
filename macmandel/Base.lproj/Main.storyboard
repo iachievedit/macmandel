@@ -706,11 +706,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="macmandel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="363"/>
+                        <rect key="frame" x="0.0" y="0.0" width="589" height="363"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="PLk-V2-cuw" customClass="MandelbrotView" customModule="macmandel" customModuleProvider="target">
-                                <rect key="frame" x="20" y="70" width="444" height="273"/>
+                                <rect key="frame" x="20" y="70" width="436" height="273"/>
                                 <subviews>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFW-X1-pZh" customClass="ZoomToolView" customModule="macmandel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="444" height="273"/>
@@ -719,7 +719,7 @@
                                 </subviews>
                             </customView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pbc-T6-TGD">
-                                <rect key="frame" x="408" y="9" width="62" height="32"/>
+                                <rect key="frame" x="517" y="9" width="62" height="32"/>
                                 <buttonCell key="cell" type="push" title="Go!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TFy-sS-Jk7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -729,16 +729,20 @@
                                 </buttonCell>
                             </button>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="trE-fI-rV4">
-                                <rect key="frame" x="20" y="51" width="440" height="5"/>
+                                <rect key="frame" x="20" y="51" width="549" height="5"/>
+                            </box>
+                            <box horizontalHuggingPriority="750" ambiguous="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Eie-y7-ouw">
+                                <rect key="frame" x="470" y="70" width="5" height="273"/>
                             </box>
                         </subviews>
                         <constraints>
                             <constraint firstItem="PLk-V2-cuw" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="G7i-ZC-TeZ"/>
                             <constraint firstAttribute="trailing" secondItem="pbc-T6-TGD" secondAttribute="trailing" constant="16" id="GbD-cJ-77F"/>
+                            <constraint firstItem="Eie-y7-ouw" firstAttribute="leading" secondItem="PLk-V2-cuw" secondAttribute="trailing" constant="16" id="GmF-e7-Uzi"/>
                             <constraint firstItem="trE-fI-rV4" firstAttribute="top" secondItem="PLk-V2-cuw" secondAttribute="bottom" constant="16" id="HT4-9B-0pA"/>
                             <constraint firstAttribute="trailing" secondItem="trE-fI-rV4" secondAttribute="trailing" constant="20" symbolic="YES" id="Wpb-rZ-xYC"/>
-                            <constraint firstAttribute="trailing" secondItem="PLk-V2-cuw" secondAttribute="trailing" constant="16" id="cLW-0D-LYt"/>
                             <constraint firstItem="PLk-V2-cuw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="meV-h3-vsy"/>
+                            <constraint firstAttribute="trailing" secondItem="Eie-y7-ouw" secondAttribute="trailing" constant="116" id="scd-ZB-Da4"/>
                             <constraint firstAttribute="bottom" secondItem="pbc-T6-TGD" secondAttribute="bottom" constant="16" id="twE-4m-t3d"/>
                             <constraint firstItem="pbc-T6-TGD" firstAttribute="top" secondItem="trE-fI-rV4" secondAttribute="bottom" constant="16" id="vOf-JK-QtW"/>
                             <constraint firstItem="PLk-V2-cuw" firstAttribute="leading" secondItem="trE-fI-rV4" secondAttribute="leading" id="yy4-S3-hJX"/>
@@ -751,7 +755,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="701.5"/>
+            <point key="canvasLocation" x="129.5" y="701.5"/>
         </scene>
     </scenes>
 </document>

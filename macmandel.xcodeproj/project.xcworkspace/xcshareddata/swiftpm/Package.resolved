@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftHEXColors",
+        "repositoryURL": "https://github.com/thii/SwiftHEXColors",
+        "state": {
+          "branch": null,
+          "revision": "e48767c35a0e3d25469d37edeb7b386893099516",
+          "version": "1.3.1"
+        }
+      },
+      {
+        "package": "SwiftyBeaver",
+        "repositoryURL": "https://github.com/SwiftyBeaver/SwiftyBeaver",
+        "state": {
+          "branch": null,
+          "revision": "2f2b7ac0b675e9d0ac696758f15bbff97eb65a31",
+          "version": "1.8.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
