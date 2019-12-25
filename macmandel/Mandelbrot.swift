@@ -29,10 +29,10 @@ class Mandelbrot {
   
   var rect:NSRect
   
-  let x0Min:CGFloat = -2.5
-  let x0Max:CGFloat = 1.0
-  let y0Min:CGFloat = -1
-  let y0Max:CGFloat = 1
+  var x0Min:CGFloat = -2.5
+  var x0Max:CGFloat = 1.0
+  var y0Min:CGFloat = -1
+  var y0Max:CGFloat = 1
   
   var xScale:CGFloat
   var yScale:CGFloat
@@ -79,6 +79,26 @@ class Mandelbrot {
         
     return iteration
  
+  }
+  
+  func zoom(upperLeft:NSPoint, lowerRight:NSPoint) {
+    
+    log.debug(upperLeft)
+    log.debug(lowerRight)
+    
+    let x0MinOrig = self.x0Min
+    let x0MaxOrig = self.x0Max
+    let y0MinOrig = self.y0Min
+    let y0MaxOrig = self.y0Max
+        
+    self.x0Min = self.xScale*(upperLeft.x  / self.rect.width) + x0MinOrig
+    self.x0Max = self.xScale*(lowerRight.x / self.rect.width) + x0MinOrig
+    self.y0Min = self.yScale*(upperLeft.y  / self.rect.height) + y0MinOrig
+    self.y0Max = self.yScale*(lowerRight.y / self.rect.height) + y0MinOrig
+    
+    // Recalculate scale
+    self.xScale = self.x0Max - (self.x0Min)
+    self.yScale = self.y0Max - (self.y0Min)
   }
   
 }

@@ -684,7 +684,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="MacMandel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -710,7 +710,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="PLk-V2-cuw" customClass="MandelbrotView" customModule="macmandel" customModuleProvider="target">
-                                <rect key="frame" x="20" y="53" width="444" height="290"/>
+                                <rect key="frame" x="20" y="70" width="444" height="273"/>
+                                <subviews>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFW-X1-pZh" customClass="ZoomToolView" customModule="macmandel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="444" height="273"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </customView>
+                                </subviews>
                             </customView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pbc-T6-TGD">
                                 <rect key="frame" x="408" y="9" width="62" height="32"/>
@@ -722,18 +728,25 @@
                                     </connections>
                                 </buttonCell>
                             </button>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="trE-fI-rV4">
+                                <rect key="frame" x="20" y="51" width="440" height="5"/>
+                            </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="pbc-T6-TGD" firstAttribute="top" secondItem="PLk-V2-cuw" secondAttribute="bottom" constant="16" id="0rH-Ea-pFH"/>
                             <constraint firstItem="PLk-V2-cuw" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="G7i-ZC-TeZ"/>
                             <constraint firstAttribute="trailing" secondItem="pbc-T6-TGD" secondAttribute="trailing" constant="16" id="GbD-cJ-77F"/>
+                            <constraint firstItem="trE-fI-rV4" firstAttribute="top" secondItem="PLk-V2-cuw" secondAttribute="bottom" constant="16" id="HT4-9B-0pA"/>
+                            <constraint firstAttribute="trailing" secondItem="trE-fI-rV4" secondAttribute="trailing" constant="20" symbolic="YES" id="Wpb-rZ-xYC"/>
                             <constraint firstAttribute="trailing" secondItem="PLk-V2-cuw" secondAttribute="trailing" constant="16" id="cLW-0D-LYt"/>
                             <constraint firstItem="PLk-V2-cuw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="meV-h3-vsy"/>
                             <constraint firstAttribute="bottom" secondItem="pbc-T6-TGD" secondAttribute="bottom" constant="16" id="twE-4m-t3d"/>
+                            <constraint firstItem="pbc-T6-TGD" firstAttribute="top" secondItem="trE-fI-rV4" secondAttribute="bottom" constant="16" id="vOf-JK-QtW"/>
+                            <constraint firstItem="PLk-V2-cuw" firstAttribute="leading" secondItem="trE-fI-rV4" secondAttribute="leading" id="yy4-S3-hJX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mandelbrotView" destination="PLk-V2-cuw" id="EBC-Kh-u70"/>
+                        <outlet property="zoomToolView" destination="mFW-X1-pZh" id="dNR-OA-Qdt"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

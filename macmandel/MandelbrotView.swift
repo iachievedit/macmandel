@@ -28,38 +28,88 @@ import Cocoa
 @IBDesignable
 class MandelbrotView: NSView {
   
-  var m:Mandelbrot?
+  var mandelbrot:Mandelbrot?
     
   func draw() {
-
-    self.m = Mandelbrot(r:self.visibleRect)
+    self.mandelbrot = Mandelbrot(r:self.visibleRect)
     self.needsDisplay = true
   }
-
-    override func draw(_ dirtyRect: NSRect) {
-      super.draw(dirtyRect)
-
-      
-      self.m?.iterate {
-        (x, y, i) in
+  
+  func zoom(upperLeft:NSPoint, lowerRight:NSPoint, mandelbrot:Mandelbrot) {
+    self.mandelbrot = mandelbrot
+    self.mandelbrot?.zoom(
+      upperLeft:upperLeft,
+      lowerRight:lowerRight
+    )
+    self.needsDisplay = true
+  }
+  
+  override func draw(_ dirtyRect: NSRect) {
+    super.draw(dirtyRect)
         
-        let p = NSBezierPath(rect: dirtyRect)
-
-        let color = NSColor.init(calibratedRed: CGFloat(Float(i)/32.0),
-                                 green: CGFloat(Float(i)/64.0),
-                                 blue: CGFloat(Float(i)/128.0), alpha: 1.0)
+    log.debug("Calculate and draw Mandelbrot")
+    
+    let context = NSGraphicsContext.current?.cgContext
+    
+    if let m = self.mandelbrot {
+      m.iterate {
+         (x, y, i) in
+           let p = CGMutablePath()
+           p.move(to: CGPoint(x:x,y:y))
+           p.addLine(to: CGPoint(x:x+1,y:y+1))
+    
+    /*        let color = NSColor.init(calibratedRed: CGFloat(Float(i)/32.0),
+                                  green: CGFloat(Float(i)/64.0),
+                                  blue: CGFloat(Float(i)/128.0), alpha: 1.0)
+ */
         
-        color.setStroke()
+        let colorSchemes = MandelbrotColors()
+        let color = colorSchemes.colorForIteration(i: i)
         
-        p.move(to: NSPoint(x:x, y:y))
-        p.line(to: NSPoint(x:x+1, y:y+1))
-        p.lineWidth = 1.0
-        p.stroke()
-        
-        self.display()
+            
+           color.setStroke()
+           context?.addPath(p)
+           context?.drawPath(using: .fillStroke)
       }
-
- 
     }
+    
+  }
+  
+  override func viewWillStartLiveResize() {
+    log.debug("Start")
+  }
+  override func viewDidEndLiveResize() {
+    log.debug("Stop")
+  }
+  
+  /*
+  func mandelbrotImage() -> Void {
+    log.debug("Cache image")
+    
+    let size = self.bounds.size
+    let imageSize = NSMakeSize(size.width, size.height)
+    
+    if let bir = self.bitmapImageRepForCachingDisplay(in: self.bounds) {
+      bir.size = imageSize
+      cacheDisplay(in: self.bounds, to: bir)
+    }
+  }
+ */
+  
+  /*
+  - (NSImage *)imageRepresentation
+   {
+     NSSize mySize = self.bounds.size;
+     NSSize imgSize = NSMakeSize( mySize.width, mySize.height );
+     
+     NSBitmapImageRep *bir = [self bitmapImageRepForCachingDisplayInRect:[self bounds]];
+     [bir setSize:imgSize];
+     [self cacheDisplayInRect:[self bounds] toBitmapImageRep:bir];
+     
+     NSImage* image = [[NSImage alloc]initWithSize:imgSize] ;
+     [image addRepresentation:bir];
+     return image;
+   }
+ */
     
 }

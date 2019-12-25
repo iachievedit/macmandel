@@ -28,6 +28,7 @@ import Cocoa
 class ViewController: NSViewController {
 
   @IBOutlet weak var mandelbrotView: MandelbrotView!
+  @IBOutlet weak var zoomToolView: ZoomToolView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,7 +43,15 @@ class ViewController: NSViewController {
   }
 
   @IBAction func goButtonClicked(_ sender: Any) {
-    self.mandelbrotView.draw()
+    if let m = self.mandelbrotView.mandelbrot {
+      self.zoomToolView.zoomPath = nil
+      self.zoomToolView.needsDisplay = true
+      
+      self.mandelbrotView.zoom(upperLeft:self.zoomToolView.startPoint, lowerRight: self.zoomToolView.stopPoint, mandelbrot: m)
+    } else {
+
+      self.mandelbrotView.draw()
+    }
   }
   
 }
